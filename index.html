@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Estilos.css">
+    <script src="./App.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <title>CONFRATERNIDAD</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="title-header" >
+            <button class="boton-bonito" onclick="MostrarModalRegistro('contai-help')">
+                <span class="material-symbols-outlined">
+                    help
+                </span>
+                Ayuda</button>
+                
+            <button class="boton-bonito" onclick="NuevoJuego()">
+                <span class="material-symbols-outlined">
+                    flag_2
+                </span>
+                Nuevo</button> 
+        </div>
+        <div class="typewriter">
+            <p>Hebreos 13:3 Acuérdense de aquellos que están en prisión, como si ustedes mismos estuvieran allí.</p>
+        </div>
+        
+
+        <p id="title-sub" style="text-align: center; width: 100%; font-size: 1.8rem; color: var(--dorado);" class="raleway kanit-regular-italic">
+            CENA PRO-RECLUSO</p>
+        <p class="texto_normal" style="color: var(--dorado);" id="pr"></p>
+        <h1 style="text-align: center; width: 100%;" class="kanit-semibold-italic">
+            CONFRATERNIDAD CARCELARIA DE COLOMBIA</h1>
+
+        <div id="id_div_boton" style="display: none; justify-content: space-evenly;">
+            <button id="btn_seleccionar" class="boton-bonito" onclick="Seleccionar()">
+                <span class="material-symbols-outlined">
+                    group_add
+                </span>
+                Seleccionar</button>
+                <button id="btn_editar" class="boton-bonito" onclick="EditarNumeros()">
+                    <span class="material-symbols-outlined">
+                        edit
+                    </span>
+                    Editar</button>
+        </div>
+
+        <br>
+    </header>
+
+    <div id="container_numeros" class="container-numeros">
+
+    </div>
+
+    <div id="contai-mensaje" class="container-mensaje">
+        <div id="tar-mensaje" class="target-mensaje">
+            <h1 style="text-align: center;" class="raleway-roboto-thin-italic">El ganador es: </h1>
+            <div id="celebration-div" class="animacion-div">
+                <p id="lbl-mensaje"
+                    style="width: 100%; display: flex; justify-content: center; font-size: large; font-size:5rem; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                </p>
+            </div>
+            <div style="display: flex; justify-content: center; margin-bottom: 3rem; margin-top: 3rem;">
+                <button class="boton-bonito" onclick="CerrarModal('contai-mensaje')">
+                    <span class="material-symbols-outlined">
+                        next_plan
+                    </span>
+                    Continuar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="contai-ingreso-numeros" class="container-mensaje">
+        <div id="tar-mensaje" class="target-mensaje" style="color: white;">
+            <h1 id="textonum" class="raleway-roboto-thin-italic" style="text-align: center; color: white;">Por favor
+                registre los nùmeros que participan, separados con una coma (,). Ejemplo: 1,2,5,8,9,10 : </h1>
+            <div id="celebration-div" class="numeros-registra">
+                <textarea name="numerosparticipa" id="numeros_ingresados" placeholder="Números de sorteo"
+                    style="width: 90%; height: 8rem; border-radius: 20px; padding: 2rem;"
+                    onkeypress="validaNumerosComa(event)"></textarea>
+            </div>
+            <div style="display: flex; justify-content: center; margin-bottom: 3rem; margin-top: 3rem;">
+                <button class="boton-bonito" onclick="CerrarModal('contai-ingreso-numeros')">
+                    <span class="material-symbols-outlined">
+                        cancel
+                    </span>
+                    Cancelar</button>
+                <button class="boton-bonito" onclick="GenerarNumeros()">
+                    <span class="material-symbols-outlined">
+                        save_as
+                    </span>
+                    Ingresar nùmeros</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="contai-error" class="container-mensaje">
+        <div id="tar-mensaje-error" class="target-mensaje">
+            <h1 id="mensaje_error-error" class="raleway-roboto-thin-italic" style="text-align: center;">Error : </h1>
+            <!-- <div id="celebration-div-error" class="numeros-registra">
+              
+            </div> -->
+            <div style="display: flex; justify-content: center; margin-bottom: 3rem; margin-top: 3rem;">
+                <button class="boton-bonito" onclick="cerrarModalAceptar()">
+                    <span class="material-symbols-outlined">
+                        sentiment_satisfied
+                    </span>
+                    Aceptar</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="contai-help" class="container-mensaje">
+        <div id="tar-mensaje-help" class="target-mensaje">
+            <h1 id="textonum" class="raleway-roboto-thin-italic" style="text-align: center; color: white;">Sigue estos
+                pasos para utilizar la aplicación: </h1>
+
+            <div style="display: flex; justify-content: center; margin-bottom: 3rem; margin-top: 3rem;">
+
+                <!-- Listado de requisitos para jugar -->
+                <div>
+                    <ul class="raleway-roboto-thin-italic" style="font-size: 1.2rem;">
+                        <li>Haz clic en el botón "Nuevo".</li>
+                        <li>Ingresa los números que participan en el sorteo.</li>
+                        <li>Haz clic en el botón "Ingresar números".</li>
+                        <li>Haz clic en el botón "Seleccionar" para elegir un ganador.</li>
+                        <li>Puedes presionar "Enter" para seleccionar otro ganador, o hacer clic en "Continuar" para ver
+                            las fichas restantes en el sorteo.</li>
+                        <li>Haz clic en "Seleccionar" para escoger un nuevo ganador.</li>
+                        <li>Recuerda que la ficha ganadora se retira del tablero de fichas disponibles.</li>
+                    </ul>
+                </div>
+
+
+                <button class="boton-bonito" onclick="CerrarModal('contai-help')">
+                    <span class="material-symbols-outlined">
+                        verified
+                    </span>
+                    Aceptar</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
