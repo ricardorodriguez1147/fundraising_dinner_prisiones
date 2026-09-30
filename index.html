@@ -24,25 +24,26 @@
 
 <body>
     <header class="header">
-        <div class="title-header" >
+        <div class="title-header">
             <button class="boton-bonito" onclick="MostrarModalRegistro('contai-help')">
                 <span class="material-symbols-outlined">
                     help
                 </span>
                 Ayuda</button>
-                
+
             <button class="boton-bonito" onclick="NuevoJuego()">
                 <span class="material-symbols-outlined">
                     flag_2
                 </span>
-                Nuevo</button> 
+                Nuevo</button>
         </div>
         <div class="typewriter">
             <p>Hebreos 13:3 Acuérdense de aquellos que están en prisión, como si ustedes mismos estuvieran allí.</p>
         </div>
-        
 
-        <p id="title-sub" style="text-align: center; width: 100%; font-size: 1.8rem; color: var(--dorado);" class="raleway kanit-regular-italic">
+
+        <p id="title-sub" style="text-align: center; width: 100%; font-size: 1.8rem; color: var(--dorado);"
+            class="raleway kanit-regular-italic">
             CENA PRO-RECLUSO</p>
         <p class="texto_normal" style="color: var(--dorado);" id="pr"></p>
         <h1 style="text-align: center; width: 100%;" class="kanit-semibold-italic">
@@ -54,11 +55,11 @@
                     group_add
                 </span>
                 Seleccionar</button>
-                <button id="btn_editar" class="boton-bonito" onclick="EditarNumeros()">
-                    <span class="material-symbols-outlined">
-                        edit
-                    </span>
-                    Editar</button>
+            <button id="btn_editar" class="boton-bonito" onclick="EditarNumeros()">
+                <span class="material-symbols-outlined">
+                    edit
+                </span>
+                Editar</button>
         </div>
 
         <br>
@@ -70,19 +71,44 @@
 
     <div id="contai-mensaje" class="container-mensaje">
         <div id="tar-mensaje" class="target-mensaje">
-            <h1 style="text-align: center;" class="raleway-roboto-thin-italic">El ganador es: </h1>
-            <div id="celebration-div" class="animacion-div">
-                <p id="lbl-mensaje"
-                    style="width: 100%; display: flex; justify-content: center; font-size: large; font-size:5rem; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+
+            <div class="winner-header">
+                <div class="winner-icon">
+                    <span class="material-symbols-outlined">
+                        emoji_events
+                    </span>
+                </div>
+
+                <h1 class="winner-title">
+                    ¡El ganador es!
+                </h1>
+
+                <p class="winner-subtitle">
+                    🎉 ¡Felicitaciones! 🎉
                 </p>
             </div>
-            <div style="display: flex; justify-content: center; margin-bottom: 3rem; margin-top: 3rem;">
-                <button class="boton-bonito" onclick="CerrarModal('contai-mensaje')">
-                    <span class="material-symbols-outlined">
-                        next_plan
-                    </span>
-                    Continuar</button>
+
+            <div id="celebration-div" class="animacion-div winner-result">
+
+                <div class="winner-number">
+                    <span></span>
+                    <span id="lbl-mensaje"></span>
+                </div>
+
+                <div class="winner-decoration"></div>
+
             </div>
+
+            <div class="winner-actions">
+                <button type="button" class="boton-bonito winner-button" onclick="CerrarModal('contai-mensaje')">
+                    <span class="material-symbols-outlined">
+                        arrow_forward
+                    </span>
+
+                    <span>Continuar</span>
+                </button>
+            </div>
+
         </div>
 
     </div>
@@ -90,7 +116,8 @@
     <div id="contai-ingreso-numeros" class="container-mensaje">
         <div id="tar-mensaje" class="target-mensaje" style="color: white;">
             <h1 id="textonum" class="raleway-roboto-thin-italic" style="text-align: center; color: white;">Por favor
-                registre los nùmeros que participan, separados con una coma (,). Ejemplo: 1,2,5,8,9,10 : </h1>
+                registre los nùmeros que participan, separados con una coma (,). Ejemplo: 206 - Pepito Perez
+                232 - Danni Rodríguez : </h1>
             <div id="celebration-div" class="numeros-registra">
                 <textarea name="numerosparticipa" id="numeros_ingresados" placeholder="Números de sorteo"
                     style="width: 90%; height: 8rem; border-radius: 20px; padding: 2rem;"

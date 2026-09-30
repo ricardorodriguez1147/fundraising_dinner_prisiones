@@ -6,8 +6,8 @@ body {
 
 :root {
   /* --main-bg-color: rgb(19, 75, 112); */
-  --main-bg-color: rgb(11, 25, 44);
-  --dorado: rgb(255, 175, 0);
+  --main-bg-color: rgb(32, 101, 95);
+  --dorado: #80BD9E;
 }
 
 .header {
@@ -99,13 +99,14 @@ body {
   height: 3rem;
   background-color: var(--dorado);
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  color: #20655F;
 }
 
 .numero-div:hover {
   /* background-color: rgb(61, 12, 17); */
-  background-color: rgb(192, 127, 0);
+  background-color: rgb(253, 244, 175);
   cursor: pointer;
-  color: white;
+  color: black;
 }
 
 
@@ -129,7 +130,7 @@ body {
   text-align: center;
   text-decoration: none;
   background-color: var(--dorado);
-  color: rgb(130, 0, 0, 1);
+  color: #20655F;
   border-radius: 4px;
   border: none;
   transition: background-color 0.3s ease;
@@ -146,8 +147,8 @@ body {
 }
 
 .boton-bonito:hover {
-  background-color: rgb(192, 127, 0);
-  color: white;
+  background-color: rgb(253, 244, 175);
+  color: black;
 }
 
 .boton-bonito:focus {
@@ -405,14 +406,432 @@ body {
 }
 
 @keyframes typing {
-  0% { width: 0; }
-  50% { width: 100%; }
-  100% { width: 0; }
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: black; }
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: black;
+  }
 }
 
 
+/* =========================================
+   MODAL GANADOR
+   ========================================= */
+
+.target-mensaje {
+  width: min(92vw, 650px);
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 45px 35px 35px;
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(circle at 50% 0%,
+      rgba(255, 193, 7, 0.18),
+      transparent 40%),
+    linear-gradient(145deg,
+      #0b1b2f 0%,
+      #10263f 55%,
+      #071525 100%);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 193, 7, 0.08);
+
+  color: white;
+}
+
+
+/* =========================================
+   DECORACIÓN SUPERIOR
+   ========================================= */
+
+.target-mensaje::before {
+  content: "";
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  top: -120px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: rgba(255, 183, 0, 0.15);
+
+  border-radius: 50%;
+
+  filter: blur(10px);
+
+  pointer-events: none;
+}
+
+
+.winner-header {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  margin-bottom: 18px;
+}
+
+
+.winner-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 12px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg,
+      #ffc107,
+      #ff9800);
+
+  color: #172033;
+
+  box-shadow:
+    0 8px 25px rgba(255, 193, 7, 0.30);
+}
+
+
+.winner-icon .material-symbols-outlined {
+  font-size: 30px;
+}
+
+
+.winner-title {
+  margin: 0;
+
+  font-family:
+    'Raleway',
+    Arial,
+    sans-serif;
+
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+
+  font-weight: 700;
+
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+}
+
+
+.winner-subtitle {
+  margin: 7px 0 0;
+
+  font-size: 0.95rem;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   RESULTADO
+   ========================================= */
+
+.winner-result {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px 10px 10px;
+
+  text-align: center;
+}
+
+
+/* Número / nombre ganador */
+
+.winner-number {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  width: 100%;
+
+  max-width: 100%;
+
+  padding: 20px 25px;
+
+  border-radius: 22px;
+
+  background: linear-gradient(135deg,
+      #ffca28,
+      #ffb300);
+
+  color: #111827;
+
+  box-shadow:
+    0 15px 35px rgba(255, 179, 0, 0.25);
+
+  font-family:
+    'Franklin Gothic Medium',
+    'Arial Narrow',
+    Arial,
+    sans-serif;
+
+  font-size: clamp(2.2rem, 9vw, 4.8rem);
+
+  font-weight: 800;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.04em;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+.winner-number span:first-child {
+  margin-right: 4px;
+
+  font-size: 0.65em;
+
+  opacity: 0.65;
+
+
+}
+
+
+/* Decorativo */
+
+.winner-decoration {
+  width: 80px;
+  height: 5px;
+
+  margin-top: 18px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(90deg,
+      transparent,
+      #ffc107,
+      transparent);
+}
+
+
+/* =========================================
+   BOTÓN
+   ========================================= */
+
+.winner-actions {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+
+  margin-top: 28px;
+}
+
+
+.winner-button {
+  min-width: 150px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 13px 24px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg,
+      #ffc107,
+      #ff9800);
+
+  color: #172033;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(255, 174, 0, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+
+.winner-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(255, 174, 0, 0.35);
+
+  filter: brightness(1.05);
+}
+
+
+.winner-button:active {
+  transform: translateY(0);
+}
+
+
+.winner-button .material-symbols-outlined {
+  font-size: 21px;
+}
+
+
+/* =========================================
+   TABLETS
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .target-mensaje {
+    width: calc(100vw - 24px);
+
+    min-height: auto;
+
+    padding: 32px 18px 25px;
+
+    border-radius: 22px;
+  }
+
+
+  .winner-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .winner-icon .material-symbols-outlined {
+    font-size: 26px;
+  }
+
+
+  .winner-title {
+    font-size: 1.7rem;
+  }
+
+
+  .winner-subtitle {
+    font-size: 0.85rem;
+  }
+
+
+  .winner-result {
+    padding: 12px 0;
+  }
+
+
+  .winner-number {
+    padding: 18px 14px;
+
+    border-radius: 18px;
+
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+
+
+  .winner-actions {
+    margin-top: 18px;
+  }
+
+
+  .winner-button {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+
+/* =========================================
+   TELÉFONOS PEQUEÑOS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .target-mensaje {
+    width: calc(100vw - 16px);
+
+    padding: 26px 14px 20px;
+
+    border-radius: 18px;
+  }
+
+
+  .winner-title {
+    font-size: 1.45rem;
+  }
+
+
+  .winner-subtitle {
+    font-size: 0.78rem;
+  }
+
+
+  .winner-number {
+    padding: 16px 10px;
+
+    font-size: clamp(1.8rem, 13vw, 2.8rem);
+  }
+
+
+  .winner-button {
+    max-width: none;
+  }
+}
